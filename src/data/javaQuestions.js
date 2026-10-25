@@ -1,0 +1,90 @@
+export const javaTopics = [
+  { id: "all", name: "All Questions", description: "Browse all Java questions" },
+  { id: "basics", name: "Core Java Basics", description: "Syntax, variables and data types" },
+  { id: "oops", name: "OOPs Concepts", description: "Classes, objects and inheritance" },
+  { id: "strings", name: "Strings", description: "String handling and common problems" },
+  { id: "collections", name: "Collections", description: "Lists, sets and maps" },
+  { id: "exceptions", name: "Exception Handling", description: "Errors and exception flow" },
+  { id: "coding", name: "Coding Questions", description: "Common Java coding practice" },
+];
+
+// Starter examples. Add your own verified questions to this array as the library grows.
+export const javaQuestions = [
+  {
+    id: "what-is-java", topic: "basics", level: "Beginner",
+    question: "What is Java?",
+    answer: "Java is a high-level, class-based programming language designed to be portable across platforms. Java source code is compiled into bytecode, which can run on a Java Virtual Machine (JVM).",
+    code: "class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, Java!\");\n    }\n}",
+    explanation: "The compiler converts source code into bytecode. A compatible JVM executes that bytecode on the target operating system.",
+  },
+  {
+    id: "jvm-jre-jdk", topic: "basics", level: "Beginner",
+    question: "What is the difference between JDK, JRE and JVM?",
+    answer: "JVM executes Java bytecode. The JRE traditionally refers to the JVM plus runtime libraries needed to run Java applications. The JDK includes development tools such as the compiler along with the runtime components.",
+    code: "javac Main.java  // compile source code\njava Main        // run the compiled class",
+    explanation: "For development, install a JDK. The exact packaging of a separate JRE varies across modern Java distributions.",
+  },
+  {
+    id: "four-oops-pillars", topic: "oops", level: "Beginner",
+    question: "What are the four pillars of OOP?",
+    answer: "The four commonly described pillars are encapsulation, abstraction, inheritance and polymorphism.",
+    code: "class Animal {\n    void sound() { System.out.println(\"Animal sound\"); }\n}\n\nclass Dog extends Animal {\n    @Override\n    void sound() { System.out.println(\"Bark\"); }\n}",
+    explanation: "Encapsulation protects state, abstraction exposes essential behavior, inheritance reuses or specializes behavior, and polymorphism lets the same interface have different implementations.",
+  },
+  {
+    id: "overloading-vs-overriding", topic: "oops", level: "Intermediate",
+    question: "What is the difference between method overloading and overriding?",
+    answer: "Overloading uses the same method name with different parameter lists, usually within one class. Overriding provides a subclass implementation of an inherited instance method with a compatible signature.",
+    code: "class Printer {\n    void print(String value) {}\n    void print(int value) {} // overloading\n}\n\nclass Parent { void greet() {} }\nclass Child extends Parent {\n    @Override void greet() {} // overriding\n}",
+    explanation: "Overloading is resolved using the method signature at compile time. Overridden instance method calls use runtime dispatch.",
+  },
+  {
+    id: "string-immutable", topic: "strings", level: "Beginner",
+    question: "Why is String immutable in Java?",
+    answer: "A String object cannot be changed after it is created. Operations that appear to modify a string return a new String instead. Immutability helps with safe sharing, string pooling and predictable behavior.",
+    code: "String name = \"Java\";\nname.concat(\" Hub\");\nSystem.out.println(name); // Java\nname = name.concat(\" Hub\");\nSystem.out.println(name); // Java Hub",
+    explanation: "The first concat call returns a new string but its result is ignored. The second call assigns the returned value to name.",
+  },
+  {
+    id: "stringbuilder-vs-stringbuffer", topic: "strings", level: "Intermediate",
+    question: "StringBuilder vs StringBuffer: what is the difference?",
+    answer: "Both provide mutable character sequences. StringBuffer synchronizes its methods, while StringBuilder does not. StringBuilder is generally preferred for local string-building when shared synchronization is unnecessary.",
+    code: "StringBuilder result = new StringBuilder();\nresult.append(\"Learn\").append(\" Java\");\nSystem.out.println(result); // Learn Java",
+    explanation: "Choose based on the concurrency requirements of your code, not simply on a blanket rule that one is always faster.",
+  },
+  {
+    id: "arraylist-vs-linkedlist", topic: "collections", level: "Intermediate",
+    question: "What is the difference between ArrayList and LinkedList?",
+    answer: "ArrayList uses a resizable array and offers fast indexed access. LinkedList is a doubly linked list; indexed access requires traversal, while insertion or removal at a known iterator position can be efficient. The best choice depends on the access pattern.",
+    code: "List<String> names = new ArrayList<>();\nnames.add(\"Asha\");\nnames.add(\"Ravi\");\nSystem.out.println(names.get(0)); // Asha",
+    explanation: "ArrayList is a good default for many list use cases. LinkedList has extra per-element memory overhead and is not automatically faster for insertions in every situation.",
+  },
+  {
+    id: "hashmap-vs-hashset", topic: "collections", level: "Intermediate",
+    question: "What is the difference between HashMap and HashSet?",
+    answer: "HashMap stores key-value pairs and requires unique keys. HashSet stores unique elements and is backed by a map implementation internally in the standard Java implementation.",
+    code: "Map<String, Integer> scores = new HashMap<>();\nscores.put(\"Mira\", 90);\nSet<String> names = new HashSet<>();\nnames.add(\"Mira\");",
+    explanation: "Use a map when each key needs an associated value; use a set when you need to represent unique elements.",
+  },
+  {
+    id: "checked-vs-unchecked", topic: "exceptions", level: "Intermediate",
+    question: "What is the difference between checked and unchecked exceptions?",
+    answer: "Checked exceptions are checked by the compiler and must be caught or declared, subject to the language rules. RuntimeException and its subclasses are unchecked, as are Error subclasses.",
+    code: "try {\n    Files.readString(Path.of(\"notes.txt\"));\n} catch (IOException exception) {\n    System.out.println(\"Could not read file\");\n}",
+    explanation: "Use exceptions to handle exceptional conditions meaningfully. Avoid catching broad exceptions without a clear recovery strategy.",
+  },
+  {
+    id: "reverse-string", topic: "coding", level: "Beginner",
+    question: "How can you reverse a string in Java?",
+    answer: "For a straightforward solution, use StringBuilder's reverse method.",
+    code: "String input = \"hello\";\nString reversed = new StringBuilder(input).reverse().toString();\nSystem.out.println(reversed); // olleh",
+    explanation: "This is convenient for common interview exercises. Be aware that Unicode text with supplementary characters or combined marks can require more careful handling depending on the definition of reversal.",
+  },
+  {
+    id: "palindrome-string", topic: "coding", level: "Beginner",
+    question: "How do you check whether a string is a palindrome?",
+    answer: "A palindrome reads the same forwards and backwards. This simple example checks exact character equality and is case-sensitive.",
+    code: "String value = \"level\";\nString reversed = new StringBuilder(value).reverse().toString();\nboolean isPalindrome = value.equals(reversed);\nSystem.out.println(isPalindrome); // true",
+    explanation: "If the question asks to ignore spaces, punctuation or letter case, normalize the input before comparing it.",
+  },
+];
